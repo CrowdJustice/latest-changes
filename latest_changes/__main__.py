@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     input_latest_changes_header: str = "### Latest Changes\n\n"
     input_template_file: Path = Path(__file__).parent / "latest-changes.jinja2"
     input_debug_logs: Optional[bool] = False
+    input_before_merge: Optional[bool] = False
 
 
 class PartialGitHubEventInputs(BaseModel):
@@ -51,7 +52,7 @@ else:
     )
     sys.exit(1)
 pr = repo.get_pull(number)
-if not pr.merged:
+if not settings.input_before_merge and not pr.merged:
     logging.info("The PR was not merged, nothing else to do.")
     sys.exit(0)
 if not settings.input_latest_changes_file.is_file():
