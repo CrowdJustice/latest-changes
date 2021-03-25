@@ -99,6 +99,7 @@ You can configure:
 * `latest_changes_header`: The header to look for before adding a new message. for example: `# CHANGELOG \n\n`.
 * `template_file`: A custom Jinja2 template file to use to generate the message, you could use this to generate a different message or to use a different format, for example, HTML instead of the default Markdown.
 * `debug_logs`: Set to `'true'` to show logs with the current settings.
+* `before_merge`: Allows release notes to be written to README before merge of PR to allow for types other than close to be used.
 
 ## Configuration example
 
